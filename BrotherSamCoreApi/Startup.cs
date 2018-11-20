@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BrotherSamCoreApi.Src.Const;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,9 +32,24 @@ namespace BrotherSamCoreApi
             services.AddSwaggerGen(c =>
 
             {
-
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "山哥的  API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact
+                    {
+                        Name = "山哥",
+                        Email = string.Empty,
+                        Url = "http://www.139.cn"
+                    },
+                    License = new License
+                    {
+                        Name = "许可证名字",
+                        Url = "http://www.130.cn"
+                    }
+                });
             });
             //end 增加 为 Swagger 2018-11-19
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -54,6 +70,10 @@ namespace BrotherSamCoreApi
 
             });
             //end 增加 为 Swagger 2018-11-19
+            //通过读取"appsettings.json"文件，设定一些常量（包括数据库读取字符串）2018-11-18
+            ReadJsonFile readJsonFile = new ReadJsonFile();
+            readJsonFile.readJson("appsettings.json");
+            //end 增加的
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
