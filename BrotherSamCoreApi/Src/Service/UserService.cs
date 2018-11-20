@@ -32,7 +32,7 @@ namespace BrotherSamCoreApi.Src.Service
                 //用string.Format拼接
                 //string sql = string.Format("SELECT * FROM  BrotherSamUser WHERE UserName='{0}'", userName);
                 //用用c# 6 语法拼接
-                string sql = $"SELECT * FROM  BrotherSamUser WHERE UserName='{userName}'";
+                string sql = $"SELECT * FROM  brothersam_user WHERE userName='{userName}'";
                 // db.Query 是 Dapper 实现的查询扩展；
                 //<BrotherSamUser>表示转换成这个约束格式
                 //IEnumerable 是因为 db.Query返回的是IEnumerable 集合
